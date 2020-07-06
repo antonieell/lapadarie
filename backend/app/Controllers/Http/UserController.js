@@ -10,7 +10,6 @@
 
 const User = use("App/Models/User");
 const Database = use("Database");
-const user = new User();
 class UserController {
   /**
    * Show a list of all users.
@@ -55,7 +54,11 @@ class UserController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {}
+  async show({ params, request, response, view }) {
+    const query = await User.find(params.id);
+    query.merge({ email: "antoniel2210@gmail.com" });
+    return query;
+  }
 
   /**
    * Update user details.
@@ -65,7 +68,13 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {}
+  async update({ params, request, response }) {
+    const requisicao = request.all();
+    const query = await User.find(params.id);
+    query.merge({ ...requisicao });
+    await query.save();
+    return query;
+  }
 
   /**
    * Delete a user with id.
