@@ -22,26 +22,8 @@ class UserController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
-    // (user.username = "admin1"),
-    //   (user.password = "admin1"),
-    //   (user.name = "Adminsol1"),
-    //   (user.sobrenome = "de1 Root"),
-    //   (user.contact = "70701-7070"),
-    //   (user.email = "admin1@admin.admin"),
-    //   await user.save();
     return await Database.table("users");
   }
-
-  /**
-   * Render a form to be used for creating a new user.
-   * GET users/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create({ request, response, view }) {}
 
   /**
    * Create/save a new user.
@@ -51,7 +33,18 @@ class UserController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, response }) {
+    const allRequests = request.all();
+    await User.create(allRequests);
+    return allRequests;
+    // (user.username = "admin1"),
+    //   (user.password = "admin1"),
+    //   (user.name = "Adminsol1"),
+    //   (user.sobrenome = "de1 Root"),
+    //   (user.contact = "70701-7070"),
+    //   (user.email = "admin1@admin.admin"),
+    //   await user.save();
+  }
 
   /**
    * Display a single user.
@@ -63,17 +56,6 @@ class UserController {
    * @param {View} ctx.view
    */
   async show({ params, request, response, view }) {}
-
-  /**
-   * Render a form to update an existing user.
-   * GET users/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
 
   /**
    * Update user details.

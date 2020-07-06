@@ -20,4 +20,4 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 
-Route.resource("/User/", "UserController");
+Route.resource("/User", "UserController").apiOnly();
