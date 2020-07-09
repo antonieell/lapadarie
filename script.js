@@ -92,3 +92,5 @@ closeFormCadastrar.forEach((value) => {
 closeFormLogin.forEach((value) => {
   value.addEventListener("click", toggleUser);
 });
+
+formCadastrar.addEventListener("submit", toggleCadastro);

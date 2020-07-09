@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{style('style')}}
+        <link href="https://fonts.googleapis.com/css?family=Podkova&display=swap" rel="stylesheet">
+        <title>LA PADARIE</title>
+
+    </head>
+    <body>
+        @loggedIn
+            <h2> You are logged in </h2>
+        @else
+            <div id="formCadastrar" class="cadastro disable">
+                <h1>Cadastre-se</h1>
+                <form method='post' action="/register">
+                    <a href="#" class='close-form-cadastrar'>X</a>
+                    <label for="username">Usuário</label>
+                    <input type="text" placeholder="Ex: Comedor de Pão" name="username">
+
+                    <label for="password">Senha</label>
+                    <input type="password" placeholder="******" name="password">
+
+                    <label for="email">Email</label>
+                    <input type="text" placeholder="Gosto@de.pão" name="email">
+
+                    <label for="name">Nome</label>
+                    <input type="text" placeholder="Walter" name="name">
+
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" placeholder="White" name="sobrenome">
+
+                    <label for="contact">Telefone</label>
+                    <input type="number" placeholder="(71) 9 5555-5555" name="contact">
+
+                    <input type="submit" value="Cadastrar">
+                </form>
+            </div>
+            <div id="formLogin" class="login disable">
+                <h1>Já tem cadastro ? Faça login</h1>
+                <form method="POST" action="http://127.0.0.1:3333/authenticated">
+                    <a href="#" class='close-form-login'>X</a>
+                    <label for="email">Email</label>
+                    <input type="text" placeholder="Gosto@de.pão" name="email">
+
+                    <label for="password">Senha</label>
+                    <input type="password" placeholder="******" name="password">
+                    <input type="submit" value="Cadastrar">
+                </form>
+            </div>
+        @endloggedIn
+        <nav>
+            <ul>
+                <li id="login" class="close-form-login">Login</li>
+                <li id="cadastrar" class="close-form-cadastrar">Cadastrar</li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <header>
+                <img src="Logo.png" alt="">
+                <h3>Quem quer pão</h3>
+            </header>
+            <aside>
+                <div class="rules">
+                    <h2>Regras</h2>
+                    <ul>
+                        <li>Ter entre 3 e 180 anos</li>
+                        <li>Tem que gostar de pão</li>
+                        <li>Tem que ter assistido a capacitação</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main>
+                <h2>Fila</h2>
+                <div id="line"></div>
+                <div id="form">
+                    <input class="name" type="text" placeholder="DIGITE SEU NOME...">
+                    <input class="amount" type="number" placeholder="Quantidade">
+                    <button>Quero Pão</button>
+                </div>
+            </main>
+        </div>
+        {{ script('script') }}
+    </body>
+</html>

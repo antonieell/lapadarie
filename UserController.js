@@ -12,30 +12,24 @@ const User = use("App/Models/User");
 const Database = use("Database");
 class UserController {
   /**
-   * Show a list of all users.
-   * GET users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * GET /users/
+   * Retorna os usuários do banco
    */
   async index({ request, response, view }) {
+    console.log("Post bateu aqui");
     return await Database.table("users");
   }
 
   /**
-   * Create/save a new user.
-   * POST users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * Método POST
+   * Cria um novo usuário no banco de dados
    */
   async store({ request, response }) {
     const allRequests = request.all();
     await User.create(allRequests);
-    return allRequests;
+    console.log(allRequests);
+    response.redirect("/");
+
     // (user.username = "admin1"),
     //   (user.password = "admin1"),
     //   (user.name = "Adminsol1"),
