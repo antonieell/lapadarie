@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,13 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route");
 
-Route.on('/').render('index')
-Route.post('/register', 'RegistroController.registro')
-Route.post('/login', 'LoginController.login')
-Route.on('/pf').render('index').middleware(['auth'])
+Route.on("/").render("index");
+Route.post("/register", "RegistroController.registro");
+Route.post("/login", "LoginController.login");
+Route.get("/logout", async ({ auth, response }) => {
+  await auth.logout();
+  return response.redirect("/");
+});
+Route.post("/pedidos", 'PedidoController.setPedido')

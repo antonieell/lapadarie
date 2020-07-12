@@ -1,20 +1,20 @@
 let queue = [
   {
     name: "Antonio figueiredo",
-    amount: 3,
+    amount: 3
   },
   {
     name: "Maria Carolina",
-    amount: 1,
+    amount: 1
   },
   {
     name: "Jão Vitor",
-    amount: 2,
+    amount: 2
   },
   {
     name: "Andressa Silva",
-    amount: 27,
-  },
+    amount: 27
+  }
 ];
 
 const inputName = document.querySelector(".name");
@@ -24,25 +24,24 @@ const line = document.getElementById("line");
 
 updateQueue();
 
-setInterval(function () {
+setInterval(function() {
   queue.shift();
   updateQueue();
 }, 10000);
 
-button.addEventListener("click", (event) => {
+button.addEventListener("click", event => {
   queue.push({
     name: inputName.value,
-    amount: inputAmount.value,
+    amount: inputAmount.value
   });
 
   if (inputAmount.value == 71) {
-    queue = queue.filter((client) => client.amount % 2 == !0);
+    queue = queue.filter(client => client.amount % 2 == !0);
     console.log("hi");
   }
 
   updateQueue();
   inputName.value = "";
-  inputAmount.value = "";
 });
 
 function updateQueue() {
@@ -76,21 +75,39 @@ let stateCadastro = false;
 let stateLogin = false;
 
 // Ativa e desativa o form de cadastro
-const toggleCadastro = (e) => {
+const toggleCadastro = e => {
   stateCadastro = !stateCadastro;
-  stateCadastro ? (formCadastrar.className = "cadastro") : (formCadastrar.className = "cadastro disable");
+  stateCadastro
+    ? (formCadastrar.className = "cadastro")
+    : (formCadastrar.className = "cadastro disable");
 };
-const toggleUser = (e) => {
+const toggleUser = e => {
   stateLogin = !stateLogin;
-  stateLogin ? (formLogin.className = "login") : (formLogin.className = "login disable");
+  stateLogin
+    ? (formLogin.className = "login")
+    : (formLogin.className = "login disable");
 };
 // Adiciona listener a todos os pontos do closeFormCadastrar
-closeFormCadastrar.forEach((value) => {
+closeFormCadastrar.forEach(value => {
   value.addEventListener("click", toggleCadastro);
 });
 
-closeFormLogin.forEach((value) => {
+closeFormLogin.forEach(value => {
   value.addEventListener("click", toggleUser);
 });
 
 formCadastrar.addEventListener("submit", toggleCadastro);
+
+const haandlerPedido = document.getElementById("buttonPedido");
+const quantidadePedido = document.getElementById("quantidadePedido");
+
+haandlerPedido.addEventListener("click", enviarPedido);
+function enviarPedido() {
+  const pedido = { quantidade: inputAmount.value };
+  console.log(inputAmount.value);
+  fetch("/pedidos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(pedido)
+  });
+}
