@@ -1,0 +1,188 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  position: relative;
+  font-family: "Podkova", serif;
+  height: 100%;
+  width: 100%;
+  background-color: #e5cf94;
+}
+
+nav {
+  height: 40px;
+  background-color: #311b02;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  height: 100%;
+  margin: auto;
+  padding: 0px;
+
+  color: #311b02;
+  list-style: none;
+}
+nav ul li {
+  margin: 0px 30px;
+  padding: 4px;
+  border-radius: 1px;
+  font-weight: bold;
+  background-color: #e5cf94;
+}
+nav ul li:hover {
+  background-color: #b9a775;
+  cursor: pointer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  margin: auto;
+  max-width: 975px;
+  padding: 20px;
+}
+
+header {
+  margin-top: 20px;
+  display: flex;
+  grid-column: 2/-1;
+  padding: 20px;
+  align-items: center;
+  color: #311b02;
+}
+
+aside {
+  grid-column: 1/2;
+}
+
+.rules {
+  background-color: white;
+  padding: 20px;
+}
+
+main {
+  grid-column: 2/-1;
+  background-color: white;
+  padding: 20px;
+}
+
+.name {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.amount {
+  margin-top: 0;
+}
+
+#form {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  grid-template-rows: 3fr 2fr;
+  grid-template-areas:
+    "n b"
+    "a b";
+  grid-gap: 7px;
+  height: 6rem;
+}
+
+input.name {
+  grid-area: n;
+  background-color: #ededed;
+  border: none;
+  padding: 5px;
+}
+
+input.amount {
+  grid-area: a;
+  background-color: #ededed;
+  border: none;
+  padding: 5px;
+}
+
+button {
+  grid-area: b;
+  border: solid 3px #311b02;
+  background-color: #e5cf94;
+  color: #311b02;
+  font-weight: 900;
+}
+
+h2 {
+  color: #311b02;
+  margin-top: 0;
+}
+
+h3 {
+  margin-left: 100px;
+  color: #311b02;
+}
+.cadastro,
+.login {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0a0704d7;
+}
+.cadastro h1,
+.login h1 {
+  color: #e5cf94;
+}
+.cadastro form,
+.login form {
+  position: relative;
+  top: 0px;
+  font-weight: bolder;
+  color: #e5cf94;
+  background-color: #311b02;
+  padding: 22px;
+  border-radius: 5px;
+}
+.cadastro form .close-form-cadastrar,
+.login form .close-form-login {
+  text-decoration: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #e5cf94;
+}
+.cadastro input,
+.login input {
+  max-width: 400px;
+}
+.cadastro form,
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.disable {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+
+  h3 {
+    margin-left: 0;
+  }
+
+  header,
+  aside,
+  main {
+    grid-column: 1/-1;
+  }
+}
